@@ -1,17 +1,11 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
 
-#include <stdio.h>
 #include <Windows.h>
 #include <psapi.h>
-#include <intrin.h>
 #include <iostream>
-#include <string>
-#include <vector>
 
-using namespace std;
 PVOID* uWorld = 0;
-
 BOOLEAN MaskCompare(PVOID buffer, LPCSTR pattern, LPCSTR mask) {
 	for (auto b = reinterpret_cast<PBYTE>(buffer); *mask; ++pattern, ++mask, ++b) {
 		if (*mask == 'x' && *reinterpret_cast<LPCBYTE>(pattern) != *b) {
@@ -45,15 +39,15 @@ BOOL APIENTRY DllMain(HMODULE module, DWORD reason, LPVOID reserved) {
 			static_cast<VOID>(freopen("CONOUT$", "w", stdout));
 			static_cast<VOID>(freopen("CONOUT$", "w", stderr));
 
-			std::cout << "Uworld Dumper by xenos#1337" << "\n" << std::endl;
-			std::cout << "-------------------" << "\n" << std::endl;
-			std::cout << "uWorld: " << "0x" << std::hex << (uintptr_t)reinterpret_cast<decltype(uWorld)>((PBYTE)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x4D\x8B\xC2", "xxx????xxx")) + *(PINT)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x4D\x8B\xC2", "xxx????xxx"))+((7)-sizeof(INT))) + (7))) - (uintptr_t)GetModuleHandle(L"FortniteClient-Win64-Shipping.exe") << "\n" << std::endl;
-			std::cout << "--------------------" << "\n" << std::endl;
-			std::cout << "Done :)" << "\n" << std::endl;
+			std::cout << "Uworld Dumper by xenos#1337" << std::endl;
+			std::cout << "-------------------" << std::endl;
+			std::cout << "uWorld: " << "0x" << std::hex << (uintptr_t)reinterpret_cast<decltype(uWorld)>((PBYTE)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x4D\x8B\xC2", "xxx????xxx")) + *(PINT)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x4D\x8B\xC2", "xxx????xxx"))+((7)-sizeof(INT))) + (7))) - (uintptr_t)GetModuleHandle(L"FortniteClient-Win64-Shipping.exe") << std::endl;
+			std::cout << "--------------------" << std::endl;
+			std::cout << "Done :)" << std::endl;
 		}
-		catch(exception e)
+		catch(std::exception e)
 		{
-			std::cout << e.what() << "\n" << std::endl;
+			std::cout << e.what() << std::endl;
 		}
 	}
 
