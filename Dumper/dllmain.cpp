@@ -41,7 +41,7 @@ BOOL APIENTRY DllMain(HMODULE module, DWORD reason, LPVOID reserved) {
 			static_cast<VOID>(freopen("CONOUT$", "w", stdout));
 			static_cast<VOID>(freopen("CONOUT$", "w", stderr));
 
-			std::cout << "Uworld Dumper by android#1337 and xenos#1337" << std::endl;
+			std::cout << "Dumper by xenos#1337" << std::endl;
 			std::cout << "-------------------" << std::endl;
 			std::cout << "uWorld: " << "0x" << std::hex << (uintptr_t)reinterpret_cast<decltype(uWorld)>((PBYTE)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x4D\x8B\xC2", "xxx????xxx")) + *(PINT)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x4D\x8B\xC2", "xxx????xxx"))+((7)-sizeof(INT))) + (7))) - (uintptr_t)GetModuleHandle(L"FortniteClient-Win64-Shipping.exe") << std::endl;
 			std::cout << "GoObjects: " << "0x" << std::hex << (uintptr_t)reinterpret_cast<decltype(uWorld)>((PBYTE)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x4D\x8B\xC2", "xxx????xxx")) + *(PINT)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x48\x8B\x0C\xC8\x48\x8B\x04\xD1", "xxx????xxxxxxxx"))+((7)-sizeof(INT))) + (7))) - (uintptr_t)GetModuleHandle(L"FortniteClient-Win64-Shipping.exe") << std::endl;

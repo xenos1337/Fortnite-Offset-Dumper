@@ -1,5 +1,5 @@
-# Fortnite-Uworld-Dumper
-A basic Uworld Offset Dumper.
+# Fortnite-Dumper
+A basic Offset Dumper.
 
 Credits<br>
 ? for MaskCompare and PBYTE FindPattern<br>
