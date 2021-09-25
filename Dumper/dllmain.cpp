@@ -6,6 +6,12 @@
 #include <iostream>
 
 PVOID* uWorld = 0;
+PVOID* GoObjects = 0;
+PVOID* LineOfSightTo = 0;
+PVOID* ProjectWorldToScreen = 0;
+PVOID* CalculateSpreadHook = 0;
+PVOID* SpreadCaller = 0;
+
 // https://github.com/lhaasper/FORTNITE-CHEATS/blob/4a533dc97fd25c674e1efae628c669213aecccb0/l0st.dev%20FN/Util.cpp#L22
 BOOLEAN MaskCompare(PVOID buffer, LPCSTR pattern, LPCSTR mask) {
 	for (auto b = reinterpret_cast<PBYTE>(buffer); *mask; ++pattern, ++mask, ++b) {
@@ -44,7 +50,7 @@ BOOL APIENTRY DllMain(HMODULE module, DWORD reason, LPVOID reserved) {
 			std::cout << "Dumper by xenos#1337" << std::endl;
 			std::cout << "-------------------" << std::endl;
 			std::cout << "uWorld: " << "0x" << std::hex << (uintptr_t)reinterpret_cast<decltype(uWorld)>((PBYTE)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x4D\x8B\xC2", "xxx????xxx")) + *(PINT)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x4D\x8B\xC2", "xxx????xxx"))+((7)-sizeof(INT))) + (7))) - (uintptr_t)GetModuleHandle(L"FortniteClient-Win64-Shipping.exe") << std::endl;
-			std::cout << "GoObjects: " << "0x" << std::hex << (uintptr_t)reinterpret_cast<decltype(uWorld)>((PBYTE)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x4D\x8B\xC2", "xxx????xxx")) + *(PINT)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x48\x8B\x0C\xC8\x48\x8B\x04\xD1", "xxx????xxxxxxxx"))+((7)-sizeof(INT))) + (7))) - (uintptr_t)GetModuleHandle(L"FortniteClient-Win64-Shipping.exe") << std::endl;
+			std::cout << "GoObjects: " << "0x" << std::hex << (uintptr_t)reinterpret_cast<decltype(GoObjects)>((PBYTE)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x4D\x8B\xC2", "xxx????xxx")) + *(PINT)((UINT_PTR)(FindPattern("\x48\x8B\x05\x00\x00\x00\x00\x48\x8B\x0C\xC8\x48\x8B\x04\xD1", "xxx????xxxxxxxx"))+((7)-sizeof(INT))) + (7))) - (uintptr_t)GetModuleHandle(L"FortniteClient-Win64-Shipping.exe") << std::endl;
 			std::cout << "LineOfSightTo: " << "0x" << std::hex << (uintptr_t)reinterpret_cast<decltype(LineOfSightTo)>((PBYTE)((UINT_PTR)(FindPattern("\xE8\x00\x00\x00\x00\x48\x8B\x0D\x00\x00\x00\x00\x33\xD2\x40\x8A\xF8", "x????xxx????xxxxx")) + *(PINT)((UINT_PTR)(FindPattern("\xE8\x00\x00\x00\x00\x48\x8B\x0D\x00\x00\x00\x00\x33\xD2\x40\x8A\xF8", "x????xxx????xxxxx")) + ((7) - sizeof(INT))) + (7))) - (uintptr_t)GetModuleHandle(L"FortniteClient-Win64-Shipping.exe") << std::endl;
 			std::cout << "ProjectWorldToScreen: " << "0x" << std::hex << (uintptr_t)reinterpret_cast<decltype(ProjectWorldToScreen)>((PBYTE)((UINT_PTR)(FindPattern("\xE8\x00\x00\x00\x00\x41\x88\x07\x48\x83\xC4\x30", "x????xxxxxxx")) + *(PINT)((UINT_PTR)(FindPattern("\xE8\x00\x00\x00\x00\x41\x88\x07\x48\x83\xC4\x30", "x????xxxxxxx")) + ((7) - sizeof(INT))) + (7))) - (uintptr_t)GetModuleHandle(L"FortniteClient-Win64-Shipping.exe") << std::endl;
 			std::cout << "CalculateSpreadHook: " << "0x" << std::hex << (uintptr_t)reinterpret_cast<decltype(CalculateSpreadHook)>((PBYTE)((UINT_PTR)(FindPattern("\xE8\x00\x00\x00\x00\x48\x8D\x4B\x28\xE8\x00\x00\x00\x00\x48\x8B\xC8", "x????xxxxx????xxx")) + *(PINT)((UINT_PTR)(FindPattern("\xE8\x00\x00\x00\x00\x48\x8D\x4B\x28\xE8\x00\x00\x00\x00\x48\x8B\xC8", "x????xxxxx????xxx")) + ((7) - sizeof(INT))) + (7))) - (uintptr_t)GetModuleHandle(L"FortniteClient-Win64-Shipping.exe") << std::endl;
